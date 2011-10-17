@@ -30,6 +30,8 @@
 					
 						<g:sortableColumn property="precio" title="${message(code: 'producto.precio.label', default: 'Precio')}" />
 					
+						<th><g:message code="producto.grupo.label" default="Grupo" /></th>
+					
 						<th><g:message code="producto.proveedor.label" default="Proveedor" /></th>
 					
 					</tr>
@@ -43,6 +45,8 @@
 						<td>${fieldValue(bean: productoInstance, field: "nombre")}</td>
 					
 						<td>${fieldValue(bean: productoInstance, field: "precio")}</td>
+					
+						<td>${fieldValue(bean: productoInstance, field: "grupo")}</td>
 					
 						<td>${fieldValue(bean: productoInstance, field: "proveedor")}</td>
 					

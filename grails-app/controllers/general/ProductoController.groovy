@@ -1,5 +1,8 @@
 package general
 
+import grails.converters.JSON
+import grails.plugins.springsecurity.Secured
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.springframework.dao.DataIntegrityViolationException
 
 class ProductoController {
@@ -99,5 +102,27 @@ class ProductoController {
 			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'producto.label', default: 'Producto'), params.id])
             redirect(action: "show", id: params.id)
         }
+    }
+    
+    def buscarGrupos() {
+//        log.debug("Params: $params")
+//        def filtro = "%${params.term}%"
+//        def grupos = Grupo.executeQuery("""
+//            select nombre from grupo like :filtro
+//        """, [filtro: filtro])
+//        def lista = []
+//        for(grupo in grupos) {
+//            lista << [id:grupo.id, value:grupo.nombre]
+//        }
+//        log.debug("Lista: $lista")
+//        log.debug("ListaJSON: ${lista as JSON}")
+
+        def filtro = "%${params.term}%"
+        def lista = Grupo.findAllByNombreIlike(filtro)
+        def resultado = []
+        for (grupo in lista){
+            resultado << [id:grupo.id, value:grupo.nombre]
+        }
+        render resultado as JSON
     }
 }

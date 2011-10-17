@@ -50,6 +50,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${productoInstance?.grupo}">
+				<li class="fieldcontain">
+					<span id="grupo-label" class="property-label"><g:message code="producto.grupo.label" default="Grupo" /></span>
+					
+						<span class="property-value" aria-labelledby="grupo-label"><g:link controller="grupo" action="show" id="${productoInstance?.grupo?.id}">${productoInstance?.grupo?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${productoInstance?.proveedor}">
 				<li class="fieldcontain">
 					<span id="proveedor-label" class="property-label"><g:message code="producto.proveedor.label" default="Proveedor" /></span>

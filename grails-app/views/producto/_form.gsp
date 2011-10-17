@@ -26,6 +26,15 @@
 	<g:field type="number" name="precio" required="" value="${fieldValue(bean: productoInstance, field: 'precio')}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: productoInstance, field: 'grupo', 'error')} required">
+	<label for="grupoProducto">
+		<g:message code="producto.grupo.label" default="Grupo" />
+		<span class="required-indicator">*</span>
+	</label>
+        <g:hiddenField id="grupoId" name="grupo.id" value="${productoInstance?.grupo?.id}"/>
+        <g:textField name="grupoProducto" value="${productoInstance?.grupo?.nombre}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: productoInstance, field: 'proveedor', 'error')} required">
 	<label for="proveedor">
 		<g:message code="producto.proveedor.label" default="Proveedor" />
